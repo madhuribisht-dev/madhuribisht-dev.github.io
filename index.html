@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Name — Technical Delivery & AI Leadership</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:        #0a0a0f;
+      --surface:   #111118;
+      --surface2:  #16161f;
+      --border:    rgba(255,255,255,0.07);
+      --accent:    #4f8ef7;
+      --accent2:   #a78bfa;
+      --gold:      #f0c060;
+      --text:      #e8e8f0;
+      --muted:     #7a7a9a;
+      --font-head: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      gap: 4rem;
+      overflow: hidden;
+    }
+
+    /* Ambient glow */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(79,142,247,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-left { position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(79,142,247,0.1);
+      border: 1px solid rgba(79,142,247,0.25);
+      border-radius: 100px;
+      padding: 0.35rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+
+    .hero h1 .line2 {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 0.8rem;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      color: var(--text);
+      opacity: 0.75;
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.4s ease both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: #3a7ae8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(79,142,247,0.35);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--text);
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.92rem;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+    }
+
+    /* Stats row */
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      animation: fadeUp 0.7s 0.5s ease both;
+    }
+
+    .stat-item {}
+    .stat-num {
+      font-family: var(--font-head);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1;
+    }
+    .stat-num span { color: var(--accent); }
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 0.3rem;
+    }
+
+    /* Hero right — photo card */
+    .hero-right {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.9s 0.3s ease both;
+    }
+
+    .photo-frame {
+      position: relative;
+      width: 340px;
+      height: 420px;
+    }
+
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2), transparent);
+      z-index: 0;
+    }
+
+    .photo-inner {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      border-radius: 19px;
+      overflow: hidden;
+      background: var(--surface2);
+    }
+
+    .photo-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Placeholder when no image */
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .photo-placeholder svg {
+      width: 64px;
+      height: 64px;
+      opacity: 0.3;
+    }
+
+    /* Floating tag on photo */
+    .photo-tag {
+      position: absolute;
+      bottom: -16px;
+      left: -24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+    }
+
+    .photo-tag-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(79,142,247,0.15);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .photo-tag-text { font-size: 0.8rem; line-height: 1.4; }
+    .photo-tag-text strong { display: block; font-size: 0.88rem; color: var(--text); }
+    .photo-tag-text span { color: var(--muted); }
+
+    .photo-tag2 {
+      position: absolute;
+      top: -16px;
+      right: -24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.8rem 1.2rem;
+      z-index: 10;
+    }
+
+    .photo-tag2-text {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .photo-tag2-text strong {
+      display: block;
+      color: var(--gold);
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 6rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 0 auto;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 3.5rem;
+    }
+
+    .about-text p {
+      color: rgba(232,232,240,0.75);
+      font-size: 1.02rem;
+      font-weight: 300;
+      margin-bottom: 1.4rem;
+      line-height: 1.8;
+    }
+
+    .about-text p strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .about-right {}
+
+    /* Value pillars */
+    .pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .pillar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .pillar:hover {
+      border-color: rgba(79,142,247,0.3);
+      transform: translateX(4px);
+    }
+
+    .pillar-icon {
+      font-size: 1.4rem;
+      min-width: 2rem;
+      text-align: center;
+      margin-top: 0.1rem;
+    }
+
+    .pillar-content {}
+    .pillar-title {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .pillar-desc {
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── SKILLS ── */
+    .skills-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 5rem 4rem;
+    }
+
+    .skills-section > .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .skill-col {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: border-color 0.2s;
+    }
+
+    .skill-col:hover { border-color: rgba(79,142,247,0.25); }
+
+    .skill-col-header {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-col-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .icon-blue { background: rgba(79,142,247,0.15); }
+    .icon-purple { background: rgba(167,139,250,0.15); }
+    .icon-gold { background: rgba(240,192,96,0.15); }
+
+    .skill-col-title {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.3rem 0.75rem;
+      font-size: 0.8rem;
+      color: rgba(232,232,240,0.7);
+      transition: all 0.2s;
+    }
+
+    .skill-tag:hover {
+      background: rgba(79,142,247,0.1);
+      border-color: rgba(79,142,247,0.3);
+      color: var(--text);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ── FOOTER STUB ── */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 7rem 1.5rem 3rem;
+        text-align: center;
+        gap: 3rem;
+      }
+
+      .hero-stats { justify-content: center; }
+      .hero-ctas { justify-content: center; }
+
+      .hero-right { order: -1; }
+      .photo-frame { width: 240px; height: 300px; }
+      .photo-tag { left: 0; bottom: -12px; }
+      .photo-tag2 { right: 0; top: -12px; }
+
+      section { padding: 4rem 1.5rem; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      .skills-section { padding: 4rem 1.5rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="#" class="nav-logo">YOUR<span>.</span>NAME</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#ai-portfolio">AI Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <div class="hero-left">
+
+      <div class="hero-badge">Available for new opportunities</div>
+
+      <h1>
+        Engineering Mindset.<br>
+        <span class="line2">Delivery Leadership.</span><br>
+        AI-Ready.
+      </h1>
+
+      <p class="hero-sub">Technical Project Manager &nbsp;·&nbsp; PMP &nbsp;·&nbsp; PSM I &nbsp;·&nbsp; 11+ Years</p>
+
+      <p class="hero-tagline">
+        I sit at the intersection of deep technical execution and structured delivery leadership — bridging engineering teams and business outcomes with equal fluency on both sides.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="YOUR_RESUME_LINK_HERE" class="btn-primary" target="_blank">
+          ↓ Download Resume
+        </a>
+        <a href="#ai-portfolio" class="btn-outline">
+          View My AI Work →
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">11<span>+</span></div>
+          <div class="stat-label">Years in Tech</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">3<span>×</span></div>
+          <div class="stat-label">Certified</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">AI<span>↑</span></div>
+          <div class="stat-label">Upskilling</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="hero-right">
+      <div class="photo-frame">
+
+        <!-- Replace src with your actual photo path -->
+        <div class="photo-inner">
+          <div class="photo-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            </svg>
+            <span>Add your photo here</span>
+          </div>
+          <!-- Uncomment and update when you add your photo:
+          <img src="photo.jpg" alt="Your Name — TPM & AI Leader" />
+          -->
+        </div>
+
+        <div class="photo-tag">
+          <div class="photo-tag-icon">🏆</div>
+          <div class="photo-tag-text">
+            <strong>PMP Certified</strong>
+            <span>Project Management Professional</span>
+          </div>
+        </div>
+
+        <div class="photo-tag2">
+          <div class="photo-tag2-text">
+            <strong>AI-900</strong>
+            In Progress ✦
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="section-label">About Me</div>
+    <div class="section-title">The rare hire who speaks<br>both languages fluently.</div>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          With <strong>11+ years in software engineering and technical delivery</strong>, I've spent my career where most people draw a line — between the engineering team and the business. I don't just manage delivery; I understand what's being built well enough to challenge it, refine it, and protect it from scope, risk, and ambiguity.
+        </p>
+        <p>
+          My background is in <strong>.NET development and backend systems</strong>, which means I come to every standup, every RAID log, every stakeholder call with context that a non-technical PM simply doesn't have. I know when an estimate is padded. I know when a dependency is being underplayed. I know when a technical decision will create a delivery problem three sprints from now.
+        </p>
+        <p>
+          I'm currently making a <strong>deliberate transition into AI-augmented delivery leadership</strong> — exploring how LLMs, agentic workflows, and RAG systems are changing how teams plan, execute, and report. My goal is to lead the delivery of AI products, not just manage projects around them.
+        </p>
+      </div>
+
+      <div class="about-right">
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon">⚙️</div>
+            <div class="pillar-content">
+              <div class="pillar-title">Technical Depth</div>
+              <div class="pillar-desc">11+ years of hands-on .NET, APIs, and backend systems. I understand what engineers are actually solving.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">📋</div>
+            <div class="pillar-content">
+              <div class="pillar-title">Delivery Discipline</div>
+              <div class="pillar-desc">PMP + PSM I certified. RAID, RAG, sprint planning, stakeholder management — structured execution is my default mode.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🤖</div>
+            <div class="pillar-content">
+              <div class="pillar-title">AI-Ready</div>
+              <div class="pillar-desc">Actively building AI portfolio artifacts — prompt engineering, RAG pipelines, LLM evaluation frameworks — for real delivery contexts.</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🌐</div>
+            <div class="pillar-content">
+              <div class="pillar-title">Domain Versatility</div>
+              <div class="pillar-desc">Worked across banking, fintech, and enterprise software. Comfortable with global clients, cross-functional teams, and ambiguous briefs.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── SKILLS ── -->
+  <div class="skills-section" id="skills">
+    <div class="inner">
+      <div class="section-label">Capabilities</div>
+      <div class="section-title">What I bring to the table.</div>
+
+      <div class="skills-grid">
+
+        <div class="skill-col">
+          <div class="skill-col-header">
+            <div class="skill-col-icon icon-blue">📦</div>
+            <div class="skill-col-title">Delivery & PM</div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Agile / Scrum</span>
+            <span class="skill-tag">Sprint Planning</span>
+            <span class="skill-tag">RAID Log</span>
+            <span class="skill-tag">PID / BRD</span>
+            <span class="skill-tag">Stakeholder Mgmt</span>
+            <span class="skill-tag">Risk Management</span>
+            <span class="skill-tag">Roadmaps</span>
+            <span class="skill-tag">RAG Reporting</span>
+            <span class="skill-tag">Resource Planning</span>
+            <span class="skill-tag">Scope Management</span>
+            <span class="skill-tag">PMO Governance</span>
+            <span class="skill-tag">RACI Matrix</span>
+          </div>
+        </div>
+
+        <div class="skill-col">
+          <div class="skill-col-header">
+            <div class="skill-col-icon icon-purple">🔧</div>
+            <div class="skill-col-title">Technical</div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">.NET / C#</span>
+            <span class="skill-tag">REST APIs</span>
+            <span class="skill-tag">SQL / Databases</span>
+            <span class="skill-tag">Azure</span>
+            <span class="skill-tag">System Design</span>
+            <span class="skill-tag">SDLC</span>
+            <span class="skill-tag">CI/CD</span>
+            <span class="skill-tag">Microservices</span>
+            <span class="skill-tag">API Integration</span>
+            <span class="skill-tag">Technical Review</span>
+          </div>
+        </div>
+
+        <div class="skill-col">
+          <div class="skill-col-header">
+            <div class="skill-col-icon icon-gold">🤖</div>
+            <div class="skill-col-title">AI & Emerging</div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Prompt Engineering</span>
+            <span class="skill-tag">RAG Concepts</span>
+            <span class="skill-tag">LLM Evaluation</span>
+            <span class="skill-tag">AI Agents</span>
+            <span class="skill-tag">Generative AI</span>
+            <span class="skill-tag">Azure AI-900</span>
+            <span class="skill-tag">ChatGPT / Claude</span>
+            <span class="skill-tag">AI Workflow Design</span>
+            <span class="skill-tag">Responsible AI</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── AI PORTFOLIO PLACEHOLDER ── -->
+  <section id="ai-portfolio">
+    <div class="section-label">AI Portfolio</div>
+    <div class="section-title">Built. Not just learned.</div>
+    <p style="color:var(--muted); margin-top:1rem; font-size:0.95rem;">
+      🚧 AI artifacts being added — Day 3 & 4 of build sprint. Check back shortly.
+    </p>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── EXPERIENCE PLACEHOLDER ── -->
+  <section id="experience">
+    <div class="section-label">Experience</div>
+    <div class="section-title">Where the years went.</div>
+    <p style="color:var(--muted); margin-top:1rem; font-size:0.95rem;">
+      🚧 Timeline coming — Day 2 of build sprint.
+    </p>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact">
+    <div class="section-label">Contact</div>
+    <div class="section-title">Let's talk delivery.</div>
+    <p style="color:var(--muted); margin-top:1rem; margin-bottom:2rem; font-size:0.95rem; max-width:480px;">
+      Open to TPM, PM, Delivery Lead, AI Project Manager, and Engineering Manager roles — India remote or hybrid.
+    </p>
+    <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+      <a href="mailto:YOUR@EMAIL.COM" class="btn-primary">✉ Email Me</a>
+      <a href="YOUR_LINKEDIN_URL" class="btn-outline" target="_blank">LinkedIn →</a>
+      <a href="https://github.com/YOUR_GITHUB" class="btn-outline" target="_blank">GitHub →</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Built with intention · <a href="https://github.com/YOUR_GITHUB">GitHub</a> · © 2025 Your Name</p>
+  </footer>
+
+</body>
+</html>
