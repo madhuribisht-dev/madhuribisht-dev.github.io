@@ -268,7 +268,255 @@
 @media (max-width: 900px) {
   .ai-cards { grid-template-columns: 1fr; }
 }
+<style>
 
+/* ── CASE STUDY ── */
+.cs-wrapper {
+  margin-top: 3rem;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.cs-header {
+  background: var(--surface);
+  padding: 2rem 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.cs-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.cs-meta-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+
+.cs-meta-value {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.cs-body {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  background: var(--surface2);
+}
+
+.cs-block {}
+
+.cs-block-label {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.cs-block p {
+  font-size: 0.95rem;
+  color: rgba(232,232,240,0.75);
+  line-height: 1.8;
+  margin-bottom: 0.8rem;
+}
+
+.cs-block p:last-child { margin-bottom: 0; }
+
+.cs-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.cs-list li {
+  font-size: 0.92rem;
+  color: rgba(232,232,240,0.72);
+  padding-left: 1.3rem;
+  position: relative;
+  line-height: 1.7;
+}
+
+.cs-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.75rem;
+  top: 0.2rem;
+}
+
+.cs-list li strong { color: var(--text); font-weight: 500; }
+
+.cs-outcomes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.cs-outcome {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.2rem;
+  text-align: center;
+}
+
+.cs-outcome-num {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.cs-outcome-num span { font-size: 1.2rem; }
+
+.cs-outcome-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ── EDUCATION ── */
+.edu-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-top: 3rem;
+  max-width: 680px;
+  transition: border-color 0.2s;
+}
+
+.edu-card:hover { border-color: rgba(79,142,247,0.25); }
+
+.edu-icon {
+  font-size: 2rem;
+  min-width: 3rem;
+  text-align: center;
+}
+
+.edu-degree {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+}
+
+.edu-school {
+  font-size: 0.88rem;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+
+.edu-period {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 0.8rem;
+}
+
+.edu-note {
+  font-size: 0.85rem;
+  color: rgba(232,232,240,0.6);
+  line-height: 1.6;
+}
+
+/* ── TOOLS ── */
+.tools-section {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 5rem 4rem;
+}
+
+.tools-section > .inner { max-width: 1200px; margin: 0 auto; }
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.tool-group {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.8rem;
+  transition: border-color 0.2s;
+}
+
+.tool-group:hover { border-color: rgba(79,142,247,0.2); }
+
+.tool-group-title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.tool-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tool-tag {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.8rem;
+  color: rgba(232,232,240,0.7);
+  transition: all 0.2s;
+}
+
+.tool-tag:hover {
+  background: rgba(79,142,247,0.08);
+  border-color: rgba(79,142,247,0.25);
+  color: var(--text);
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .cs-meta-grid { grid-template-columns: 1fr 1fr; }
+  .cs-outcomes { grid-template-columns: 1fr 1fr; }
+  .cs-body { padding: 1.5rem; }
+  .tools-section { padding: 4rem 1.5rem; }
+  .tools-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 500px) {
+  .cs-meta-grid { grid-template-columns: 1fr; }
+  .cs-outcomes { grid-template-columns: 1fr 1fr; }
+}
+
+</style>
+
+    
     footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.82rem; }
     footer a { color: var(--accent); text-decoration: none; }
 
@@ -309,6 +557,8 @@
       <li><a href="#certifications">Certifications</a></li>
       <li><a href="#ai-portfolio">AI Work</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="#casestudy">Case Study</a></li>
+    <li><a href="#tools">Tools</a></li>
     </ul>
   </nav>
 
@@ -549,6 +799,186 @@
       </div>
     </div>
   </div>
+<!-- ── EDUCATION SECTION ── -->
+<!-- Paste this AFTER the certifications section divider -->
+
+<div class="section-divider"></div>
+
+<section id="education">
+  <div class="section-label">Education</div>
+  <div class="section-title">Where it started.</div>
+
+  <div class="edu-card">
+    <div class="edu-left">
+      <div class="edu-icon">🎓</div>
+    </div>
+    <div class="edu-right">
+      <div class="edu-degree">Bachelor of Technology — B.Tech</div>
+      <div class="edu-school">BTKIT Dwarahat · Uttarakhand, India</div>
+      <div class="edu-period">2010 – 2014</div>
+      <div class="edu-note">Computer Science & Engineering foundation that underpins 11+ years of software delivery, architecture review, and technical leadership.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── TOOLS SECTION ── -->
+<!-- Paste this AFTER the education section -->
+
+<div class="section-divider"></div>
+
+<div class="tools-section" id="tools">
+  <div class="inner">
+    <div class="section-label">Tools & Platforms</div>
+    <div class="section-title">What I work with daily.</div>
+
+    <div class="tools-grid">
+
+      <div class="tool-group">
+        <div class="tool-group-title">Project & Delivery</div>
+        <div class="tool-tags">
+          <span class="tool-tag">JIRA</span>
+          <span class="tool-tag">Confluence</span>
+          <span class="tool-tag">MS Project</span>
+          <span class="tool-tag">Smartsheet</span>
+          <span class="tool-tag">Azure DevOps</span>
+          <span class="tool-tag">ServiceNow</span>
+          <span class="tool-tag">Miro</span>
+          <span class="tool-tag">Lucidchart</span>
+          <span class="tool-tag">SharePoint</span>
+          <span class="tool-tag">Teams Planner</span>
+        </div>
+      </div>
+
+      <div class="tool-group">
+        <div class="tool-group-title">Development & DevOps</div>
+        <div class="tool-tags">
+          <span class="tool-tag">Git</span>
+          <span class="tool-tag">TFS</span>
+          <span class="tool-tag">CI/CD Pipelines</span>
+          <span class="tool-tag">Visual Studio</span>
+          <span class="tool-tag">Azure Portal</span>
+          <span class="tool-tag">SQL Server</span>
+          <span class="tool-tag">Postman</span>
+          <span class="tool-tag">Selenium</span>
+        </div>
+      </div>
+
+      <div class="tool-group">
+        <div class="tool-group-title">AI & Productivity</div>
+        <div class="tool-tags">
+          <span class="tool-tag">Claude AI</span>
+          <span class="tool-tag">ChatGPT / GPT-4</span>
+          <span class="tool-tag">GitHub Copilot</span>
+          <span class="tool-tag">Notion</span>
+          <span class="tool-tag">Microsoft 365</span>
+          <span class="tool-tag">Google Workspace</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+  <!-- ── CASE STUDY SECTION ── -->
+<!-- Paste this BEFORE the AI Portfolio section divider -->
+
+<div class="section-divider"></div>
+
+<section id="casestudy">
+  <div class="section-label">Case Study</div>
+  <div class="section-title">From legacy to live.<br>A platform modernisation story.</div>
+
+  <div class="cs-wrapper">
+
+    <div class="cs-header">
+      <div class="cs-meta-grid">
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Client</div>
+          <div class="cs-meta-value">Leading UK Retail Bank</div>
+        </div>
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Duration</div>
+          <div class="cs-meta-value">18+ Months</div>
+        </div>
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Location</div>
+          <div class="cs-meta-value">London, UK (Onshore)</div>
+        </div>
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">My Role</div>
+          <div class="cs-meta-value">Onshore SPOC · Team Lead · Delivery</div>
+        </div>
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Domain</div>
+          <div class="cs-meta-value">Banking & Financial Services</div>
+        </div>
+        <div class="cs-meta-item">
+          <div class="cs-meta-label">Tech</div>
+          <div class="cs-meta-value">.NET · REST APIs · WCF · SQL Server</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-body">
+
+      <div class="cs-block">
+        <div class="cs-block-label">The Situation</div>
+        <p>A leading UK retail bank was running critical banking workflows — spanning payments, credit risk, and customer-facing services — on legacy WCF-based vendor integrations. The architecture was tightly coupled, difficult to maintain, and increasingly incompatible with the bank's modernisation roadmap. Every change required extensive coordination across multiple vendor contracts and internal teams, slowing delivery and increasing operational risk.</p>
+        <p>I was deployed onshore in London as the single point of contact between the client's senior stakeholders and the Accenture delivery team in India — responsible for owning the programme end-to-end from requirements through to production release.</p>
+      </div>
+
+      <div class="cs-block">
+        <div class="cs-block-label">The Challenge</div>
+        <p>The migration from WCF to REST API was not a like-for-like swap. It required re-architecting integration touchpoints across payments, credit risk, and multiple downstream systems — each with their own release cadences, compliance requirements, and business stakeholder expectations. Running this in parallel with live production systems meant zero tolerance for defects and a non-negotiable requirement for phased delivery with full rollback capability at every milestone.</p>
+        <p>Coordinating across seven cross-functional teams — Payments, Credit Risk, QA, DevOps, Security, Product, and senior delivery leadership — while maintaining sprint velocity and keeping a distributed offshore team aligned was the core delivery challenge.</p>
+      </div>
+
+      <div class="cs-block">
+        <div class="cs-block-label">What I Did</div>
+        <ul class="cs-list">
+          <li>Acted as the <strong>onshore single point of contact</strong> — translating client requirements into structured user stories, technical specifications, and sprint-ready backlog items for the offshore development team.</li>
+          <li>Led <strong>sprint planning and backlog grooming</strong> with the Product Owner, ensuring each sprint had clearly defined scope, acceptance criteria, and dependency flags before planning began.</li>
+          <li>Facilitated <strong>cross-team dependency management</strong> across Payments, Credit Risk, QA, and DevOps — coordinating integration timelines and managing blockers before they reached the sprint.</li>
+          <li>Drove <strong>architectural decisions</strong> on the WCF-to-REST API migration approach — working with senior architects to define the phased rollout strategy, API contract design, and backwards compatibility requirements.</li>
+          <li>Mentored a team of junior developers through the technical and delivery practices shift — from waterfall-influenced working patterns to a fully Agile, sprint-based delivery model.</li>
+          <li>Managed <strong>senior stakeholder communication</strong> — presenting delivery status, risk updates, and milestone readiness directly to client delivery managers and UK leadership on a weekly basis.</li>
+        </ul>
+      </div>
+
+      <div class="cs-block">
+        <div class="cs-block-label">The Outcome</div>
+        <div class="cs-outcomes">
+          <div class="cs-outcome">
+            <div class="cs-outcome-num">95<span>%+</span></div>
+            <div class="cs-outcome-label">On-time delivery across all releases</div>
+          </div>
+          <div class="cs-outcome">
+            <div class="cs-outcome-num">0</div>
+            <div class="cs-outcome-label">Critical defects post go-live</div>
+          </div>
+          <div class="cs-outcome">
+            <div class="cs-outcome-num">30<span>%</span></div>
+            <div class="cs-outcome-label">Reduction in rework and production incidents</div>
+          </div>
+          <div class="cs-outcome">
+            <div class="cs-outcome-num">20<span>%</span></div>
+            <div class="cs-outcome-label">Improvement in sprint delivery velocity</div>
+          </div>
+        </div>
+        <p style="margin-top:1.5rem;">The legacy WCF integrations were successfully replaced with a modern REST API layer across the platform, reducing integration complexity, improving system maintainability, and enabling the bank to onboard new vendor integrations in days rather than months. The project was recognised by UK client leadership and resulted in an ACE Award for exemplary performance and client success.</p>
+      </div>
+
+      <div class="cs-block">
+        <div class="cs-block-label">What This Taught Me</div>
+        <p>Managing a platform modernisation in a live banking environment taught me that delivery leadership is fundamentally a risk management discipline. Every decision — from sprint commitment to API contract design — needed to be made with the production system in mind. The technical work was complex, but the harder challenge was maintaining trust across seven teams and two geographies while keeping a non-negotiable delivery timeline intact. That's the work I want to keep doing, now with AI tooling layered on top of it.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
   <div class="section-divider"></div>
 
