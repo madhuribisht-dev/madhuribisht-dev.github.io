@@ -149,7 +149,7 @@
   /* AI PORTFOLIO */
 .ai-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+ grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   margin-top: 1rem;
 }
@@ -676,8 +676,8 @@
         </div>
         <div class="photo-tag2">
           <div class="photo-tag2-text">
-            <strong>AI-900</strong>
-            In Progress ✦
+            <strong>PSM 1</strong>
+            Ceritified
           </div>
         </div>
       </div>
@@ -1057,66 +1057,83 @@
   <div class="section-divider"></div>
 
 <section id="ai-portfolio">
-    <div class="section-label">AI Portfolio</div>
-    <div class="section-title">Built. Not just learned.</div>
-    <p style="color:var(--muted);font-size:0.95rem;margin:1rem 0 3rem;max-width:600px;">
-      Three working tools built using prompt engineering — each solving a real delivery pain point. Designed, tested, and critically evaluated against real banking project scenarios.
-    </p>
+  <div class="section-label">AI Portfolio</div>
+  <div class="section-title">Built. Not just learned.</div>
+  <p style="color:var(--muted);font-size:0.95rem;margin:1rem 0 3rem;max-width:600px;">
+    A live web application and three documented prompt engineering artifacts — each solving a real delivery pain point. Designed, built, and deployed during a strategic upskilling sprint.
+  </p>
 
-    <div class="ai-cards">
+  <div class="ai-cards">
 
-      <div class="ai-card">
-        <div class="ai-card-top">
-          <div class="ai-card-icon icon-blue">01</div>
-          <div class="ai-card-tag">Prompt Engineering</div>
-        </div>
-        <div class="ai-card-title">AI Sprint Planner</div>
-        <div class="ai-card-desc">Converts user stories into a structured sprint plan — story points, acceptance criteria, assumptions, dependencies, and risks — in under 60 seconds. Tested on a UK buy-to-let mortgage product.</div>
-        <div class="ai-card-meta">
-          <span>Input: User Stories</span>
-          <span>Output: Sprint Plan Table</span>
-          <span>Domain: Banking</span>
-        </div>
-        <a href="https://github.com/madhuribisht-dev/ai-sprint-planner" target="_blank" class="ai-card-link">View on GitHub →</a>
+    <div class="ai-card" style="border-color:rgba(79,142,247,0.25);background:var(--surface2);">
+      <div class="ai-card-top">
+        <div class="ai-card-icon icon-blue">🚀</div>
+        <div class="ai-card-tag">Live App</div>
       </div>
-
-      <div class="ai-card">
-        <div class="ai-card-top">
-          <div class="ai-card-icon icon-purple">02</div>
-          <div class="ai-card-tag">Risk Management</div>
-        </div>
-        <div class="ai-card-title">AI RAID Log Generator</div>
-        <div class="ai-card-desc">Takes an unstructured project brief and generates a fully populated RAID log — Risks, Assumptions, Issues, Dependencies — with impact ratings, owner roles, and mitigation actions. Includes project RAG status.</div>
-        <div class="ai-card-meta">
-          <span>Input: Project Brief</span>
-          <span>Output: RAID Log + RAG</span>
-          <span>Domain: Banking</span>
-        </div>
-        <a href="https://github.com/madhuribisht-dev/ai-raid-generator" target="_blank" class="ai-card-link">View on GitHub →</a>
+      <div class="ai-card-title">AI Delivery Command Centre</div>
+      <div class="ai-card-desc">A fully deployed web application with four AI-powered tools — Sprint Planner, RAID Log Generator, Status Report Summarizer, and Project Health Scorecard. Built with HTML, CSS, JavaScript, and a serverless backend. Free to use.</div>
+      <div class="ai-card-meta">
+        <span>4 Tools</span>
+        <span>Live on Vercel</span>
+        <span>Groq AI Backend</span>
       </div>
-
-      <div class="ai-card">
-        <div class="ai-card-top">
-          <div class="ai-card-icon icon-gold">03</div>
-          <div class="ai-card-tag">Stakeholder Reporting</div>
-        </div>
-        <div class="ai-card-title">AI Status Report Summarizer</div>
-        <div class="ai-card-desc">Converts raw, scattered team updates into a formatted executive RAG status report — ready for CTO and client distribution. Reduces weekly reporting time from 90 minutes to under 10.</div>
-        <div class="ai-card-meta">
-          <span>Input: Raw Team Updates</span>
-          <span>Output: Executive Report</span>
-          <span>Domain: Banking</span>
-        </div>
-        <a href="https://github.com/madhuribisht-dev/ai-status-summarizer" target="_blank" class="ai-card-link">View on GitHub →</a>
+      <div style="display:flex;gap:0.7rem;margin-top:0.5rem;flex-wrap:wrap;">
+        <a href="https://ai-delivery-centre.vercel.app/" target="_blank" class="ai-card-link" style="color:var(--green);">Try it Live →</a>
+        <a href="https://github.com/madhuribisht-dev/ai-delivery-centre" target="_blank" class="ai-card-link">GitHub →</a>
       </div>
-
     </div>
 
-    <div class="ai-footer-note">
-      All artifacts include the full prompt, sample output, and critical evaluation — documenting where AI output was corrected using domain judgment.
+    <div class="ai-card">
+      <div class="ai-card-top">
+        <div class="ai-card-icon icon-blue">01</div>
+        <div class="ai-card-tag">Prompt Engineering</div>
+      </div>
+      <div class="ai-card-title">AI Sprint Planner</div>
+      <div class="ai-card-desc">Converts user stories into a structured sprint plan with story points, acceptance criteria, risks, and dependencies. Tested on a UK buy-to-let mortgage product.</div>
+      <div class="ai-card-meta">
+        <span>Input: User Stories</span>
+        <span>Output: Sprint Plan</span>
+        <span>Domain: Banking</span>
+      </div>
+      <a href="https://github.com/madhuribisht-dev/ai-sprint-planner" target="_blank" class="ai-card-link">View on GitHub →</a>
     </div>
 
-  </section>
+    <div class="ai-card">
+      <div class="ai-card-top">
+        <div class="ai-card-icon icon-purple">02</div>
+        <div class="ai-card-tag">Risk Management</div>
+      </div>
+      <div class="ai-card-title">AI RAID Log Generator</div>
+      <div class="ai-card-desc">Converts unstructured project briefs into fully populated RAID logs with impact ratings, owner roles, and mitigation actions. Includes project RAG status.</div>
+      <div class="ai-card-meta">
+        <span>Input: Project Brief</span>
+        <span>Output: RAID Log</span>
+        <span>Domain: Banking</span>
+      </div>
+      <a href="https://github.com/madhuribisht-dev/ai-raid-generator" target="_blank" class="ai-card-link">View on GitHub →</a>
+    </div>
+
+    <div class="ai-card">
+      <div class="ai-card-top">
+        <div class="ai-card-icon icon-gold">03</div>
+        <div class="ai-card-tag">Stakeholder Reporting</div>
+      </div>
+      <div class="ai-card-title">AI Status Report Summarizer</div>
+      <div class="ai-card-desc">Converts raw team updates into executive RAG status reports ready for CTO and client distribution. Reduces weekly reporting from 90 minutes to under 10.</div>
+      <div class="ai-card-meta">
+        <span>Input: Team Updates</span>
+        <span>Output: RAG Report</span>
+        <span>Domain: Banking</span>
+      </div>
+      <a href="https://github.com/madhuribisht-dev/ai-status-summarizer" target="_blank" class="ai-card-link">View on GitHub →</a>
+    </div>
+
+  </div>
+
+  <div class="ai-footer-note">
+    All artifacts include full prompts, sample outputs, and critical evaluation. The live app is deployed on Vercel with a serverless backend — free to use, no login required.
+  </div>
+</section>
 
   <div class="section-divider"></div>
 
@@ -1181,7 +1198,7 @@
     <div class="section-title">Let's talk delivery.</div>
     <p style="color:var(--muted);font-size:0.95rem;margin:1rem 0 2rem;max-width:480px;">Open to TPM, PM, Delivery Lead, AI Project Manager, and Engineering Manager roles — India remote or hybrid.</p>
     <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-      <a href="mailto:mbisht930fficial@gmail.com" class="btn-primary">✉ Email Me</a>
+      <a href="mailto:mbisht93official@gmail.com" class="btn-primary">✉ Email Me</a>
       <a href="https://linkedin.com/in/madhuri-bishtkaira/" class="btn-outline" target="_blank">LinkedIn →</a>
       <a href="https://github.com/madhuribisht-dev" class="btn-outline" target="_blank">GitHub →</a>
     </div>
